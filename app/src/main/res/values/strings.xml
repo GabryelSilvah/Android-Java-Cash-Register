@@ -118,7 +118,7 @@
         <item>Itens não Concluídos</item>
     </string-array>
 
-    <string-array name="lista_idiomas">
+    <string-array name="lista_nome_idiomas">
         <item>Português (Brasil)</item>
         <item>Inglês (EUA)</item>
         <item>Espanhol (Espanha)</item>
