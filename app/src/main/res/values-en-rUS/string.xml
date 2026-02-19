@@ -107,7 +107,7 @@
         <item>Automobiles</item>
     </string-array>
 
-    <string-array name="lista_nomeFiltros_produtos">
+    <string-array name="lista_nomesFiltros_produtos">
         <item>All</item>
         <item>Greater Quantity</item>
         <item>Smallest Quantity</item>

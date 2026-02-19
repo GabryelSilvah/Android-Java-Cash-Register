@@ -112,7 +112,7 @@
         <item>Automóviles</item>
     </string-array>
 
-    <string-array name="lista_nomeFiltros_produtos">
+    <string-array name="lista_nomesFiltros_produtos">
         <item>Todo</item>
         <item>Mayor Cantidad</item>
         <item>Cantidad más Pequeña</item>
