@@ -2,6 +2,8 @@ package prominence.divisao7.cash_register.ui.produtos;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
 import android.view.View;
 import android.view.ViewStub;
 import android.widget.CheckBox;
@@ -41,17 +43,20 @@ public class Detalhes_activity extends AppCompatActivity {
 
         inicializar();
         showMenu(R.id.btn_menu);
-        exibirValores();
-        marcarCheckProduto();
         voltarHome();
-        conexao_db.close();
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+
+        new Handler(Looper.getMainLooper()).post(this::exibirValores);
+        new Handler(Looper.getMainLooper()).post(this::marcarCheckProduto);
     }
 
     //Inicializando variáveis
     private void inicializar() {
-
         this.conexao_db = Conexao.getInstancia(this);
-
         this.intentRecebida = getIntent();
 
         this.nome_produto = findViewById(R.id.nome_produto_detalhe);
@@ -66,10 +71,7 @@ public class Detalhes_activity extends AppCompatActivity {
         String quantidade = intentRecebida.getStringExtra("quantidade_produto") + " Un.";
 
         //Pegando lista de dados para spinner no resources de string
-        String[] string_array_prioridades = getResources().getStringArray(R.array.lista_prioridades);
-        List<String> lista_prioridades = new ArrayList<>(Arrays.asList(string_array_prioridades));
-
-        //Pegando lista de dados para spinner no resources de string
+        List<String> lista_prioridades = new ArrayList<>(Arrays.asList(getResources().getStringArray(R.array.lista_prioridades)));
         String[] string_array_categoria = getResources().getStringArray(R.array.lista_categorias);
         List<String> lista_categorias = new ArrayList<>(Arrays.asList(string_array_categoria));
 
@@ -85,12 +87,9 @@ public class Detalhes_activity extends AppCompatActivity {
 
     //Evento de click no btn menu
     private void showMenu(int ID_componente) {
-        findViewById(ID_componente).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                MenuBottom menu = new MenuBottom(Detalhes_activity.this);
-                menu.show();
-            }
+        findViewById(ID_componente).setOnClickListener((e) -> {
+            MenuBottom menu = new MenuBottom(Detalhes_activity.this);
+            menu.show();
         });
     }
 
@@ -124,31 +123,20 @@ public class Detalhes_activity extends AppCompatActivity {
         quantidade_produto_valores.setText(quantidade);
         preco_unidade_produto_valores.setText(preco_unidade);
         preco_total_produto_valores.setText(preco_final);
-
-
     }
+
 
     public void marcarCheckProduto() {
-
-        this.check_produto.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                conexao_db.produtoRepository().updateCheckProduto(check_produto.isChecked(), intentRecebida.getIntExtra("id_produto", 0));
-            }
+        this.check_produto.setOnClickListener((e) -> {
+            conexao_db.produtoRepository().updateCheckProduto(check_produto.isChecked(), intentRecebida.getIntExtra("id_produto", 0));
         });
-
-
     }
+
 
     //Voltar para a tela principal
     private void voltarHome() {
-        findViewById(R.id.btn_voltar_detalhes).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(Detalhes_activity.this, HomeActivity.class);
-                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                startActivity(intent);
-            }
+        findViewById(R.id.btn_voltar_detalhes).setOnClickListener((e) -> {
+            finish();
         });
     }
 
