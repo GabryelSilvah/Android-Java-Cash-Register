@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    android:background="#f3f3f3"
+    tools:context=".ui.configuracoes.Idioma_activity">
+
+    <include
+        android:id="@+id/menu"
+        layout="@layout/menu_top" />
+
+
+    <TextView
+        android:textColor="@color/black"
+        android:id="@+id/txt_titulo_idioma"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="@string/idioma_topico"
+        android:textSize="17sp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/menu" />
+
+
+    <Spinner
+        android:id="@+id/input_spinner_idioma"
+        style="@style/input_spinner"
+        android:layout_width="wrap_content"
+        android:layout_marginTop="20dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txt_titulo_idioma" />
+
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btn_alterar_idioma"
+        style="@style/btn_padrao"
+        android:layout_marginTop="40dp"
+        android:text="@string/btn_alterar"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/input_spinner_idioma" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

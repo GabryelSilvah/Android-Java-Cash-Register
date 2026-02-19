@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#f3f3f3"
+    android:fitsSystemWindows="true"
+    tools:context=".ui.home.HomeActivity">
+
+
+    <include
+        android:id="@+id/menu"
+        layout="@layout/menu_top" />
+
+
+    <TextView
+        android:id="@+id/txt_filtros"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="30dp"
+        android:text="@string/filtro_home"
+        android:textColor="@color/black"
+        android:textSize="17sp"
+        app:layout_constraintBottom_toBottomOf="@+id/input_spinner_filtros_produtos"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/input_spinner_filtros_produtos" />
+
+    <Spinner
+        android:id="@+id/input_spinner_filtros_produtos"
+        style="@style/input_spinner_filtro"
+        android:layout_marginStart="10dp"
+        app:layout_constraintBottom_toBottomOf="@+id/btn_add_novo"
+        app:layout_constraintLeft_toRightOf="@+id/txt_filtros"
+        app:layout_constraintTop_toTopOf="@+id/btn_add_novo" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btn_add_novo"
+        style="@style/btn_add"
+        android:layout_gravity="end"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="30dp"
+        android:text="@string/btn_add"
+        android:textColor="#faf0dc"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/menu" />
+
+
+    <LinearLayout
+        android:id="@+id/container_lista_produtos"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginTop="20dp"
+        android:background="#f3f3f3"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btn_add_novo">
+
+
+    </LinearLayout>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

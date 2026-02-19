@@ -1,0 +1,126 @@
+<resources>
+    <string name="app_name" translatable="false">Cash Register</string>
+    <string name="nome_menu" translatable="false">Cash Register</string>
+
+
+    <string name="criadores">Desenvolvido por: Prominence (Gabryel Silvah)</string>
+    <string name="ultima_atualizacao">Data última atualização: 02/10/2025</string>
+    <string name="versao_app">V 1.0.4</string>
+    <string name="versao_app_sobre">Versão instalada: V 1.0.4</string>
+
+
+    <string name="boas_vindas">Boas-Vindas!</string>
+    <string name="mensagem_lista_vazia">Nenhum item cadastrado</string>
+    <string name="mensagem_erro_filtragem">Ocorreu um erro ao filtrar os resultados</string>
+    <string name="mensagem_lista_filtragem_vazia">Nenhum item encontrado com esse filtro</string>
+    <string name="mensagem_toast_nome_vazio">Informe o nome do produto</string>
+    <string name="mensagem_toast_quantidade_vazio">Informe a qunatidade do produto</string>
+    <string name="mensagem_toast_sucesso_editar">Alterações salvas com sucesso!</string>
+    <string name="mensagem_toast_sucesso_salvar">Cadastrado com sucesso!</string>
+    <string name="mensagem_toast_sucesso_idioma">Idioma alterado com sucesso!</string>
+    <string name="mensagem_toast_nome_repetido">Já existe um item com esse nome</string>
+
+
+    <string name="dialog_confirmar">Confirmar</string>
+    <string name="dialog_message">Deseja mesmo excluir esse produto?</string>
+    <string name="dialog_positivo">Sim</string>
+    <string name="dialog_negativo">Não</string>
+    <string name="dialog_message_cancelar">Exclusão cancelada</string>
+
+    <string name="ad_infor">Anúncio</string>
+
+
+    <string name="check_verificado">Já foi concluído</string>
+    <string name="config_idioma">Idioma</string>
+    <string name="config_termos">Termos e Políticas</string>
+    <string name="config_sobre">Sobre</string>
+    <string name="filtro_home">Filtros:</string>
+    <string name="form_nome">Nome:</string>
+    <string name="form_quantidade">Quantidade:</string>
+    <string name="form_prioridade">Prioridade:</string>
+    <string name="form_preco">Preço:</string>
+
+    <string name="txt_sobre">
+        Aplicativo básico de listagem de compras. Com essa versão já é
+        possível realizar a maioria das operações diárias envolvendo registro
+        de compras a serem feitas. Disponível em três idiomas (Português, Espanhol e Inglês).
+    </string>
+
+
+    <string name="input_nome">Nome:</string>
+    <string name="input_quantidade">Quantidade:</string>
+    <string name="input_prioridade">Prioridade:</string>
+    <string name="input_categoria">Categoria (opcional):</string>
+    <string name="input_preco">Preço unidade (opcional):</string>
+
+    <string name="hint_input_nome">Insira o nome do item</string>
+    <string name="hint_input_quantidade">Informe a quantidade do item</string>
+
+
+    <string name="btn_excluir">Excluir</string>
+    <string name="btn_voltar">Voltar</string>
+    <string name="btn_cancelar">Cancelar</string>
+    <string name="btn_salvar">Salvar</string>
+    <string name="btn_editar">Editar</string>
+    <string name="btn_alterar">Alterar</string>
+    <string name="btn_add">Adicionar</string>
+
+
+    <string name="menu_inico">Início</string>
+    <string name="menu_valores">Valores</string>
+    <string name="menu_cadastro_item">Cadastrar Item</string>
+    <string name="menu_config">Configurações</string>
+
+    <string name="default_quantidade">1</string>
+    <string name="default_preco">0</string>
+
+    <string name="label_nome">Nome: </string>
+    <string name="label_quantidade">Quantidade: </string>
+    <string name="label_prioridade">Prioridade: </string>
+    <string name="label_categoria">Categoria: </string>
+    <string name="label_preco">Preço Un: </string>
+
+    <string name="valores_preco_uni">+ R$ </string>
+    <string name="valores_preco_total">Total: R$ </string>
+    <string name="valores_montante">Montante: R$ </string>
+    <string name="valores_quantidade_itens">Quant. de itens: </string>
+
+    <string name="idioma_topico">Selecione um idioma</string>
+
+
+    <string-array name="lista_prioridades">
+        <item>Baixa</item>
+        <item>Média</item>
+        <item>Alta</item>
+    </string-array>
+
+    <string-array name="lista_categorias">
+        <item>Geral</item>
+        <item>Eletrônicos</item>
+        <item>Saúde</item>
+        <item>Higiene Pessoal</item>
+        <item>Alimentos</item>
+        <item>Limpeza</item>
+        <item>Animais</item>
+        <item>Esportes</item>
+        <item>Beleza</item>
+        <item>Automóveis</item>
+    </string-array>
+
+    <string-array name="lista_nomeFiltros_produtos">
+        <item>Todos</item>
+        <item>Maior Quantidade</item>
+        <item>Menor Quantidade</item>
+        <item>Prioridade Baixa</item>
+        <item>Prioridade Média</item>
+        <item>Prioridade Alta</item>
+        <item>Itens Concluídos</item>
+        <item>Itens não Concluídos</item>
+    </string-array>
+
+    <string-array name="lista_idiomas">
+        <item>Português (Brasil)</item>
+        <item>Inglês (EUA)</item>
+        <item>Espanhol (Espanha)</item>
+    </string-array>
+</resources>

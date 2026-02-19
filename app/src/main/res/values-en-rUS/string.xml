@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name" translatable="false">Cash Register</string>
+    <string name="nome_menu" translatable="false">Cash Register</string>
+
+
+    <string name="criadores">Developed by: Prominence (Gabryel Silvah)</string>
+    <string name="ultima_atualizacao">Last update date: 02/10/2025</string>
+    <string name="versao_app">V 1.0.4</string>
+    <string name="versao_app_sobre">Installed version: V 1.0.4</string>
+
+
+    <string name="boas_vindas">Welcome!</string>
+    <string name="mensagem_lista_vazia">No items registered</string>
+    <string name="mensagem_erro_filtragem">An error occurred while filtering the results</string>
+    <string name="mensagem_lista_filtragem_vazia">No items found with this filter</string>
+    <string name="mensagem_toast_nome_vazio">Enter the name of the product</string>
+    <string name="mensagem_toast_quantidade_vazio">Enter the quantity of the product</string>
+    <string name="mensagem_toast_sucesso_editar">Changes saved successfully!</string>
+    <string name="mensagem_toast_sucesso_salvar">Registered successfully!</string>
+    <string name="mensagem_toast_sucesso_idioma">Language changed successfully!</string>
+    <string name="mensagem_toast_nome_repetido">An item with that name already exists</string>
+
+
+    <string name="dialog_confirmar">Confirm</string>
+    <string name="dialog_message">Are you sure you want to delete this product?</string>
+    <string name="dialog_positivo">Yes</string>
+    <string name="dialog_negativo">No</string>
+    <string name="dialog_message_cancelar">Canceled deletion</string>
+
+    <string name="ad_infor">Ad</string>
+
+    <string name="check_verificado">It has already been completed</string>
+    <string name="config_idioma">language</string>
+    <string name="config_termos">Terms and Policies</string>
+    <string name="config_sobre">About</string>
+    <string name="filtro_home">Filters:</string>
+    <string name="form_nome">Name:</string>
+    <string name="form_quantidade">Amount:</string>
+    <string name="form_prioridade">Priority:</string>
+    <string name="form_preco">Price:</string>
+
+    <string name="txt_sobre">
+        Basic shopping list application. With this version, it is already
+        possible to perform most daily operations involving recording purchases
+        to be made. Available in three languages (Portuguese, Spanish and English).
+    </string>
+
+
+    <string name="input_nome">Name:</string>
+    <string name="input_quantidade">Quantity:</string>
+    <string name="input_prioridade">Priority:</string>
+    <string name="input_categoria">Category (optional):</string>
+    <string name="input_preco">Unit price (optional):</string>
+
+    <string name="hint_input_nome">Enter item name</string>
+    <string name="hint_input_quantidade">Enter the quantity of the item</string>
+
+
+    <string name="btn_excluir">Delete</string>
+    <string name="btn_voltar">Back</string>
+    <string name="btn_cancelar">Cancel</string>
+    <string name="btn_salvar">Save</string>
+    <string name="btn_editar">Edit</string>
+    <string name="btn_alterar">Change</string>
+    <string name="btn_add">Add</string>
+
+
+    <string name="menu_inico">Home</string>
+    <string name="menu_valores">Values</string>
+    <string name="menu_cadastro_item">Register Item</string>
+    <string name="menu_config">Settings</string>
+
+    <string name="default_quantidade">1</string>
+    <string name="default_preco">0</string>
+
+    <string name="label_nome">Name: </string>
+    <string name="label_quantidade">Quantity: </string>
+    <string name="label_prioridade">Priority: </string>
+    <string name="label_categoria">Category: </string>
+    <string name="label_preco">Unit Price: </string>
+
+    <string name="valores_preco_uni">+ $ </string>
+    <string name="valores_preco_total">Total: $ </string>
+    <string name="valores_montante">Sum: $ </string>
+    <string name="valores_quantidade_itens">Quant. items: </string>
+
+    <string name="idioma_topico">Select a language</string>
+
+
+    <string-array name="lista_prioridades">
+        <item>Low</item>
+        <item>Medium</item>
+        <item>High</item>
+    </string-array>
+
+    <string-array name="lista_categorias">
+        <item>General</item>
+        <item>Electronics</item>
+        <item>Health</item>
+        <item>Personal Hygiene</item>
+        <item>Food</item>
+        <item>Cleaning</item>
+        <item>Animals</item>
+        <item>Sports</item>
+        <item>Beauty</item>
+        <item>Automobiles</item>
+    </string-array>
+
+    <string-array name="lista_nomeFiltros_produtos">
+        <item>All</item>
+        <item>Greater Quantity</item>
+        <item>Smallest Quantity</item>
+        <item>Low Priority</item>
+        <item>Medium Priority</item>
+        <item>High Priority</item>
+        <item>Completed Items</item>
+        <item>Unfinished Items</item>
+    </string-array>
+
+    <string-array name="lista_idiomas">
+        <item>Portuguese (Brazil)</item>
+        <item>English (US)</item>
+        <item>Spanish (Spain)</item>
+    </string-array>
+
+
+</resources>

@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string translatable="false" name="app_name">Cash Register</string>
+    <string translatable="false" name="nome_menu">Cash Register</string>
+
+
+    <string name="criadores">Desarrollado por: Prominence (Gabryel Silvah)</string>
+    <string name="ultima_atualizacao">Data última atualização: 20/10/2025</string>
+    <string name="versao_app">V 1.0.4</string>
+    <string name="versao_app_sobre">Versión instalada: V 1.0.4</string>
+
+
+
+    <string name="boas_vindas">¡Bienvenido!</string>
+    <string name="mensagem_lista_vazia">No hay artículos registrados</string>
+    <string name="mensagem_erro_filtragem">Se produjo un error al filtrar los resultados.</string>
+    <string name="mensagem_lista_filtragem_vazia">No se encontraron artículos con este filtro</string>
+    <string name="mensagem_toast_nome_vazio">Introduzca el nombre del producto</string>
+    <string name="mensagem_toast_quantidade_vazio">Introduzca la cantidad del producto</string>
+    <string name="mensagem_toast_sucesso_editar">¡Cambios guardados exitosamente!</string>
+    <string name="mensagem_toast_sucesso_salvar">¡Registrado exitosamente!</string>
+    <string name="mensagem_toast_sucesso_idioma">¡El idioma cambió exitosamente!</string>
+    <string name="mensagem_toast_nome_repetido">Ya existe un elemento con ese nombre</string>
+
+
+    <string name="dialog_confirmar">Confirmar</string>
+    <string name="dialog_message">¿Estás seguro que deseas eliminar este producto?</string>
+    <string name="dialog_positivo">Sí</string>
+    <string name="dialog_negativo">No</string>
+    <string name="dialog_message_cancelar">Eliminación cancelada</string>
+
+        <string name="ad_infor">Anuncio</string>
+
+    <string name="check_verificado">Ya se ha completado</string>
+    <string name="config_idioma">Idioma</string>
+    <string name="config_termos">Términos y políticas</string>
+    <string name="config_sobre">Sobre</string>
+    <string name="filtro_home">Filtros:</string>
+    <string name="form_nome">Nombre:</string>
+    <string name="form_quantidade">Cantidad:</string>
+    <string name="form_prioridade">Prioridad:</string>
+    <string name="form_preco">Precio:</string>
+
+
+    <string name="txt_sobre">
+        Aplicación básica de lista de compras. Con esta versión, ya es
+        posible realizar la mayoría de las operaciones diarias, incluyendo el
+        registro de compras. Disponible en tres idiomas (portugués, español e inglés).
+    </string>
+
+
+    <string name="input_nome">Nombre:</string>
+    <string name="input_quantidade">Cantidad:</string>
+    <string name="input_prioridade">Prioridade:</string>
+    <string name="input_categoria">Categoría (opcional):</string>
+    <string name="input_preco">Precio unitario (opcional):</string>
+
+    <string name="hint_input_nome">Introduzca el nombre del artículo</string>
+    <string name="hint_input_quantidade">Introduzca la cantidad del artículo</string>
+
+
+    <string name="btn_excluir">Borrar</string>
+    <string name="btn_voltar">Volver</string>
+    <string name="btn_cancelar">Cancelar</string>
+    <string name="btn_salvar">Ahorrar</string>
+    <string name="btn_editar">Editar</string>
+    <string name="btn_alterar">Alterar</string>
+    <string name="btn_add">Agregar</string>
+
+
+    <string name="menu_inico">Comenzar</string>
+    <string name="menu_valores">Valores</string>
+    <string name="menu_cadastro_item">Registrar artículo</string>
+    <string name="menu_config">Ajustes</string>
+
+    <string name="default_quantidade">1</string>
+    <string name="default_preco">0</string>
+
+
+    <string name="label_nome">Nombre: </string>
+    <string name="label_quantidade">Cantidad: </string>
+    <string name="label_prioridade">Prioridade: </string>
+    <string name="label_categoria">Categoría: </string>
+    <string name="label_preco">Precio Un: </string>
+
+    <string name="valores_preco_uni">+ € </string>
+    <string name="valores_preco_total">Total: € </string>
+    <string name="valores_montante">Cantidad: € </string>
+    <string name="valores_quantidade_itens">Cant. de artículos: </string>
+
+    <string name="idioma_topico">Seleccione un idioma</string>
+
+
+
+
+    <string-array name="lista_prioridades">
+        <item>Baja</item>
+        <item>Media</item>
+        <item>Alta</item>
+    </string-array>
+
+    <string-array name="lista_categorias">
+        <item>General</item>
+        <item>Electrónica</item>
+        <item>Salud</item>
+        <item>Higiene Personal</item>
+        <item>Alimento</item>
+        <item>Limpieza</item>
+        <item>Animales</item>
+        <item>Deportes</item>
+        <item>Belleza</item>
+        <item>Automóviles</item>
+    </string-array>
+
+    <string-array name="lista_nomeFiltros_produtos">
+        <item>Todo</item>
+        <item>Mayor Cantidad</item>
+        <item>Cantidad más Pequeña</item>
+        <item>Prioridad Baja</item>
+        <item>Prioridad Media</item>
+        <item>Prioridad Alta</item>
+        <item>Artículos completados</item>
+        <item>Artículos sin terminar</item>
+    </string-array>
+
+    <string-array name="lista_idiomas">
+        <item>Portugués (Brasil)</item>
+        <item>Inglés (Estados Unidos)</item>
+        <item>Español (España)</item>
+    </string-array>
+
+
+</resources>
