@@ -31,6 +31,7 @@ public class Idioma_activity extends AppCompatActivity {
 
 
         inicializar();
+        exibirIdiomaAtual();
         showMenu(R.id.btn_menu);
         escolherIdioma();
         conexao_db.close();
@@ -39,23 +40,29 @@ public class Idioma_activity extends AppCompatActivity {
 
 
     private void inicializar() {
-
-        this.input_spinner_idioma = findViewById(R.id.input_spinner_idioma);
         this.conexao_db = Conexao.getInstancia(this);
+        this.input_spinner_idioma = findViewById(R.id.input_spinner_idioma);
         this.btn_alterar_idioma = findViewById(R.id.btn_alterar_idioma);
 
 
-        //Pegando lista de dados para spinner no resources de string
-        //Adicionando lista de filtros no spinner
-        String[] string_array_prioridades = getResources().getStringArray(R.array.lista_idiomas);
-        List<String> lista_idiomas = Arrays.asList(string_array_prioridades);
-
-        ArrayAdapter<String> adapterIdiomas = new ArrayAdapter<>(this, R.layout.molde_lista_spinner, lista_idiomas);
+        //Buscando lista de dados para spinner no resources de string
+        List<String> lista_nome_idiomas = Arrays.asList(getResources().getStringArray(R.array.lista_nome_idiomas));
+        ArrayAdapter<String> adapterIdiomas = new ArrayAdapter<>(this, R.layout.molde_lista_spinner, lista_nome_idiomas);
         adapterIdiomas.setDropDownViewResource(R.layout.molde_lista_spinner);
         input_spinner_idioma.setAdapter(adapterIdiomas);
+    }
 
 
-        //Validando se foi encontrado idioma salvo, setando no spinner idioma salvo
+    //Evento de click no btn menu
+    private void showMenu(int ID_componente) {
+        findViewById(ID_componente).setOnClickListener((e) -> {
+            MenuBottom menu = new MenuBottom(Idioma_activity.this);
+            menu.show();
+        });
+    }
+
+
+    private void exibirIdiomaAtual() {
         Optional<Idioma> idiomaEncontrado = this.conexao_db.idiomaRepository().findLanguage();
         if (idiomaEncontrado.isPresent()) {
             switch (idiomaEncontrado.get().getNomeISO_idioma()) {
@@ -73,43 +80,31 @@ public class Idioma_activity extends AppCompatActivity {
                     break;
             }
         }
-
-        conexao_db.close();
-    }
-
-
-    //Evento de click no btn menu
-    private void showMenu(int ID_componente) {
-        findViewById(ID_componente).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                MenuBottom menu = new MenuBottom(Idioma_activity.this);
-                menu.show();
-            }
-        });
     }
 
 
     private void escolherIdioma() {
-        this.btn_alterar_idioma.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                switch (input_spinner_idioma.getSelectedItemPosition()) {
-                    case 0:
-                        Translation_idioma.setLocale("pt", Idioma_activity.this);;
-                        break;
-                    case 1:
-                        Translation_idioma.setLocale("en", Idioma_activity.this);
-                        break;
-                    case 2:
-                        Translation_idioma.setLocale("es", Idioma_activity.this);
-                        break;
-                    default:
-                        break;
-                }
+        this.btn_alterar_idioma.setOnClickListener((e) -> {
+            switch (input_spinner_idioma.getSelectedItemPosition()) {
+                case 0:
+                    Translation_idioma.setLocale("pt", Idioma_activity.this);
+                    break;
+                case 1:
+                    Translation_idioma.setLocale("en", Idioma_activity.this);
+                    break;
+                case 2:
+                    Translation_idioma.setLocale("es", Idioma_activity.this);
+                    break;
+                default:
+                    break;
             }
         });
     }
 
 
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        conexao_db.close();
+    }
 }
