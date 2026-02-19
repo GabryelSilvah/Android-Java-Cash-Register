@@ -41,6 +41,12 @@ public class BoasVindas_activity extends AppCompatActivity {
         new Handler(Looper.getMainLooper()).post(this::selecionarIdioma);
     }
 
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        conexao_db.close();
+    }
+
     private void inicializar() {
         this.conexao_db = Conexao.getInstancia(BoasVindas_activity.this);
         this.input_spinner_idioma = findViewById(R.id.input_spinner_idioma_boasVindas);

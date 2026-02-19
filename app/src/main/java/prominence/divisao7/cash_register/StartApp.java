@@ -2,6 +2,8 @@ package prominence.divisao7.cash_register;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -23,14 +25,29 @@ public class StartApp extends AppCompatActivity {
         super.onCreate(savedInstanceState);
 
         inicializar();
-        validarPrimeiroAcesso();
-
     }
+
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        new Handler(Looper.getMainLooper()).post(this::validarPrimeiroAcesso);
+    }
+
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        conexao_db.close();
+    }
+
 
     private void inicializar() {
         this.conexao_db = Conexao.getInstancia(this);
         this.idiomaPadraoDispositivo = Locale.getDefault().getLanguage();
     }
+
+
 
     private void validarPrimeiroAcesso() {
 

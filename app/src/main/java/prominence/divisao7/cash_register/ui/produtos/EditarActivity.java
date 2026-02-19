@@ -45,7 +45,6 @@ public class EditarActivity extends AppCompatActivity {
         inizialiar();
         showMenu(R.id.btn_menu);
         voltarHome();
-        salvar();
     }
 
 

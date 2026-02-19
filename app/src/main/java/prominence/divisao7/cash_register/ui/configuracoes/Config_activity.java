@@ -27,49 +27,34 @@ public class Config_activity extends AppCompatActivity {
 
     //Evento de click no btn menu
     private void showMenu(int ID_componente) {
-        findViewById(ID_componente).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+        findViewById(ID_componente).setOnClickListener((e)-> {
                 MenuBottom menu = new MenuBottom(Config_activity.this);
                 menu.show();
-            }
         });
     }
 
 
     private void irParaIdiomas() {
-        findViewById(R.id.config_idioma).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
+        findViewById(R.id.config_idioma).setOnClickListener((e)-> {
                 Intent intent = new Intent(Config_activity.this, Idioma_activity.class);
                 startActivity(intent);
-            }
         });
     }
 
 
     private void irParaTermos() {
-
-        findViewById(R.id.config_termos_and_politicas).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+        findViewById(R.id.config_termos_and_politicas).setOnClickListener((e)-> {
                 Intent intent = new Intent(Intent.ACTION_VIEW);
                 intent.setData(Uri.parse("https://cash-register-termos.blogspot.com/"));
                 startActivity(intent);
-            }
         });
     }
 
 
     private void irParaSobre() {
-        findViewById(R.id.config_sobre).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
+        findViewById(R.id.config_sobre).setOnClickListener((e)-> {
                 Intent intent = new Intent(Config_activity.this, Sobre_activity.class);
                 startActivity(intent);
-            }
         });
     }
 

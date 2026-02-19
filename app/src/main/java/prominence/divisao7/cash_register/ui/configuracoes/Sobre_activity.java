@@ -24,24 +24,16 @@ public class Sobre_activity extends AppCompatActivity {
 
     //Evento de click no btn menu
     private void showMenu(int ID_componente) {
-        findViewById(ID_componente).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                MenuBottom menu = new MenuBottom(Sobre_activity.this);
-                menu.show();
-            }
+        findViewById(ID_componente).setOnClickListener((e) -> {
+            MenuBottom menu = new MenuBottom(Sobre_activity.this);
+            menu.show();
         });
     }
 
 
-    private void voltarConfig(){
-        findViewById(R.id.btn_voltar_sobre).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(Sobre_activity.this, Config_activity.class);
-                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                startActivity(intent);
-            }
+    private void voltarConfig() {
+        findViewById(R.id.btn_voltar_sobre).setOnClickListener((e) -> {
+            finish();
         });
     }
 

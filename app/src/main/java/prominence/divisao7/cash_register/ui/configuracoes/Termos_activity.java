@@ -20,14 +20,10 @@ public class Termos_activity extends AppCompatActivity {
 
 
     private void irParaTermos() {
-
-        findViewById(R.id.txt_termos).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(Intent.ACTION_VIEW);
-                intent.setData(Uri.parse(""));
-                startActivity(intent);
-            }
+        findViewById(R.id.txt_termos).setOnClickListener((e) -> {
+            Intent intent = new Intent(Intent.ACTION_VIEW);
+            intent.setData(Uri.parse(""));
+            startActivity(intent);
         });
     }
 

@@ -1,6 +1,8 @@
 package prominence.divisao7.cash_register.ui.produtos;
 
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.LinearLayout;
@@ -36,10 +38,21 @@ public class Valores_activity extends AppCompatActivity {
 
         inicializar();
         showMenu(R.id.btn_menu);
-        inforTopTela();
-        listarProdutos();
     }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+
+        new Handler(Looper.getMainLooper()).post(this::listarProdutos);
+        new Handler(Looper.getMainLooper()).post(this::inforTopTela);
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        conexao_db.close();
+    }
 
     private void inicializar() {
         this.conexao_db = Conexao.getInstancia(this);
@@ -56,12 +69,9 @@ public class Valores_activity extends AppCompatActivity {
 
     //Evento de click no btn menu
     private void showMenu(int ID_componente) {
-        findViewById(ID_componente).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                MenuBottom menu = new MenuBottom(Valores_activity.this);
-                menu.show();
-            }
+        findViewById(ID_componente).setOnClickListener((e) -> {
+            MenuBottom menu = new MenuBottom(Valores_activity.this);
+            menu.show();
         });
     }
 
@@ -95,13 +105,14 @@ public class Valores_activity extends AppCompatActivity {
             mensagem.setText(getString(R.string.mensagem_lista_vazia));
 
             this.container_lista_valores.addView(mensagem);
-
-        } else {
-            //Configurando e exibindo lista na recyclerView
-            AdapterValores adapter = new AdapterValores(listaProdutos, this);
-            this.recyclerValores.setAdapter(adapter);
+            conexao_db.close();
+            return;
         }
 
+
+        //Configurando e exibindo lista na recyclerView
+        AdapterValores adapter = new AdapterValores(listaProdutos, this);
+        this.recyclerValores.setAdapter(adapter);
         conexao_db.close();
     }
 }

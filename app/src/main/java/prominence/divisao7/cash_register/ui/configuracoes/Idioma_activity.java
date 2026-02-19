@@ -1,7 +1,6 @@
 package prominence.divisao7.cash_register.ui.configuracoes;
 
 import android.os.Bundle;
-import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 
