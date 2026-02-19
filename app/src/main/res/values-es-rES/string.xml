@@ -123,7 +123,7 @@
         <item>Artículos sin terminar</item>
     </string-array>
 
-    <string-array name="lista_idiomas">
+    <string-array name="lista_nome_idiomas">
         <item>Portugués (Brasil)</item>
         <item>Inglés (Estados Unidos)</item>
         <item>Español (España)</item>
