@@ -2,7 +2,8 @@ package prominence.divisao7.cash_register.ui.home;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
+import android.os.Handler;
+import android.os.Looper;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.Spinner;;
@@ -19,36 +20,42 @@ import prominence.divisao7.cash_register.dao.Conexao;
 
 public class BoasVindas_activity extends AppCompatActivity {
 
+    private Conexao conexao_db;
     private Spinner input_spinner_idioma;
     private ImageView btn_img_next;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
         setContentView(R.layout.boas_vindas);
+
+
         inicializar();
+        primeiroItemIdiomaPadrao();
+    }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
 
+        new Handler(Looper.getMainLooper()).post(this::selecionarIdioma);
     }
 
     private void inicializar() {
-
+        this.conexao_db = Conexao.getInstancia(BoasVindas_activity.this);
         this.input_spinner_idioma = findViewById(R.id.input_spinner_idioma_boasVindas);
         this.btn_img_next = findViewById(R.id.btn_img_next);
 
 
-        //Pegando lista de dados para spinner no resources de string
-        String[] string_array_idiomas = getResources().getStringArray(R.array.lista_idiomas);
-        List<String> lista_idiomas = Arrays.asList(string_array_idiomas);
-
-        ArrayAdapter<String> adapterIdiomas = new ArrayAdapter<>(this, R.layout.molde_lista_spinner, lista_idiomas);
+        //Buscando lista de dados para spinner no resources de string
+        List<String> lista_nome_idiomas = Arrays.asList(getResources().getStringArray(R.array.lista_nome_idiomas));
+        ArrayAdapter<String> adapterIdiomas = new ArrayAdapter<>(this, R.layout.molde_lista_spinner, lista_nome_idiomas);
         adapterIdiomas.setDropDownViewResource(R.layout.molde_lista_spinner);
-
-
-        //Adicionando lista de filtros no spinner
         this.input_spinner_idioma.setAdapter(adapterIdiomas);
+    }
 
+
+    private void primeiroItemIdiomaPadrao() {
         switch (Locale.getDefault().getLanguage()) {
             case "pt":
                 this.input_spinner_idioma.setSelection(0);
@@ -63,12 +70,16 @@ public class BoasVindas_activity extends AppCompatActivity {
                 this.input_spinner_idioma.setSelection(1);
                 break;
         }
+    }
 
 
+    private void selecionarIdioma() {
         this.btn_img_next.setOnClickListener((e) -> {
 
+            //Capturando idioma selecionado
             int positionSelected = input_spinner_idioma.getSelectedItemPosition();
 
+            //Setando idioma
             switch (positionSelected) {
                 case 0:
                     Translation_idioma.setLocale("pt", BoasVindas_activity.this);
@@ -82,15 +93,15 @@ public class BoasVindas_activity extends AppCompatActivity {
 
             }
 
-
-            Conexao conexao_db = Conexao.getInstancia(BoasVindas_activity.this);
+            //Atualizando status de alteração do idioma
             conexao_db.idiomaRepository().updateStatusAlteracao(false);
+
+            //Redirecionando para home
             Intent intent = new Intent(BoasVindas_activity.this, HomeActivity.class);
-            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
             startActivity(intent);
-
+            finish();
         });
-
-
     }
+
+
 }
