@@ -11,11 +11,14 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.LinearLayout;
 import android.widget.Spinner;
+
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.RecyclerView;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+
 import prominence.divisao7.cash_register.R;
 import prominence.divisao7.cash_register.adapter.AdapterProduto;
 import prominence.divisao7.cash_register.common.MenuBottom;
@@ -60,12 +63,12 @@ public class HomeActivity extends AppCompatActivity {
         this.conexao_db = Conexao.getInstancia(this);
 
 
-        //Pegando lista com nome dos filtros dos produtos
-        List<String> lista_nomeFiltros_produtos = Arrays.asList(getResources().getStringArray(R.array.lista_nomeFiltros_produtos));
+        //Buscando lista com nome dos filtros dos produtos
+        List<String> lista_nomesFiltros_produtos = Arrays.asList(getResources().getStringArray(R.array.lista_nomesFiltros_produtos));
 
 
         //Setando nome dos filtros no molde de spinner customizado
-        ArrayAdapter<String> adapterSpinner = new ArrayAdapter<>(this, R.layout.molde_lista_spinner, lista_nomeFiltros_produtos);
+        ArrayAdapter<String> adapterSpinner = new ArrayAdapter<>(this, R.layout.molde_lista_spinner, lista_nomesFiltros_produtos);
         adapterSpinner.setDropDownViewResource(R.layout.molde_lista_spinner);
         this.input_spinner_filtros_produtos.setAdapter(adapterSpinner);
         this.input_spinner_filtros_produtos.setSelection(0);//Item padrão
@@ -79,24 +82,19 @@ public class HomeActivity extends AppCompatActivity {
 
     //Evento de click no btn menu
     private void showMenu(int ID_componente) {
-        findViewById(ID_componente).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                MenuBottom menu = new MenuBottom(HomeActivity.this);
-                menu.show();
-            }
+        findViewById(ID_componente).setOnClickListener((e) -> {
+            MenuBottom menu = new MenuBottom(HomeActivity.this);
+            menu.show();
         });
     }
 
 
     //Chamando tela de cadastro
     private void chamarCadastro() {
-        findViewById(R.id.btn_add_novo).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(HomeActivity.this, Cadastro_Activity.class);
-                startActivity(intent);
-            }
+        findViewById(R.id.btn_add_novo).setOnClickListener((e) -> {
+            Intent intent = new Intent(HomeActivity.this, Cadastro_Activity.class);
+            startActivity(intent);
+
         });
 
     }
@@ -111,7 +109,7 @@ public class HomeActivity extends AppCompatActivity {
         //Validando se a lista está vazia
         if (listaProdutos.isEmpty()) {
             recycler.setAdapter(null);
-            Recurso.exibirMensagemNotFound(container_lista_produtos, HomeActivity.this,getString(R.string.mensagem_lista_vazia));
+            Recurso.exibirMensagemNotFound(container_lista_produtos, HomeActivity.this, getString(R.string.mensagem_lista_vazia));
             return;
         }
 
@@ -165,7 +163,7 @@ public class HomeActivity extends AppCompatActivity {
                         break;
                     default:
                         recycler.setAdapter(null);
-                        Recurso.exibirMensagemNotFound(container_lista_produtos, HomeActivity.this,getString(R.string.mensagem_erro_filtragem));
+                        Recurso.exibirMensagemNotFound(container_lista_produtos, HomeActivity.this, getString(R.string.mensagem_erro_filtragem));
                         break;
 
                 }
@@ -174,13 +172,13 @@ public class HomeActivity extends AppCompatActivity {
                 //Validando se a lista está vazia
                 if (listaProdutos.isEmpty() && position != 0) {
                     recycler.setAdapter(null);
-                    Recurso.exibirMensagemNotFound(container_lista_produtos, HomeActivity.this,getString(R.string.mensagem_lista_filtragem_vazia));
+                    Recurso.exibirMensagemNotFound(container_lista_produtos, HomeActivity.this, getString(R.string.mensagem_lista_filtragem_vazia));
                     return;
                 }
 
 
                 if (!listaProdutos.isEmpty()) {
-                    //Removendo toda e qualquer view que tenha sido adicionada antes dentro do container central, para remover TextView com mensagem
+                    //Removendo qualquer view adicionada anteriomente dentro do container central
                     container_lista_produtos.removeAllViews();
 
                     //Adicionando e vinculando listaRecycler novamento porque pode ter sido removida quando não encontrou algum produto na filtragem
@@ -206,8 +204,6 @@ public class HomeActivity extends AppCompatActivity {
             }
         });
     }
-
-
 
 
 }
