@@ -1,4 +1,4 @@
-package prominence.divisao7.cash_register.common;
+package prominence.divisao7.cash_register.core.tools;
 
 import android.app.LocaleManager;
 import android.content.Context;
@@ -10,16 +10,16 @@ import androidx.core.os.LocaleListCompat;
 
 import java.util.Optional;
 
-import prominence.divisao7.cash_register.dao.Conexao;
-import prominence.divisao7.cash_register.exceptions.NotFoundException;
-import prominence.divisao7.cash_register.model.Idioma;
+import prominence.divisao7.cash_register.core.database.Conexao;
+import prominence.divisao7.cash_register.core.tools.exceptions.NotFoundException;
+import prominence.divisao7.cash_register.domain.model.Idioma;
 
 public class Translation_idioma {
 
 
     public static void setLocale(String idioma, Context contexto) {
 
-        Conexao conexao_db = Conexao.getInstancia(contexto);
+        Conexao conexao_db = Conexao.getInstance(contexto);
 
         //Se um idioma for escolhido no spinner, o valor dele será salvo na base de dados
         if (idioma != null) {

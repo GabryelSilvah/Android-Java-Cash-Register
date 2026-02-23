@@ -14,8 +14,8 @@ import java.util.List;
 import java.util.Locale;
 
 import prominence.divisao7.cash_register.R;
-import prominence.divisao7.cash_register.common.Translation_idioma;
-import prominence.divisao7.cash_register.dao.Conexao;
+import prominence.divisao7.cash_register.core.tools.Translation_idioma;
+import prominence.divisao7.cash_register.core.database.Conexao;
 
 
 public class BoasVindas_activity extends AppCompatActivity {
@@ -48,7 +48,7 @@ public class BoasVindas_activity extends AppCompatActivity {
     }
 
     private void inicializar() {
-        this.conexao_db = Conexao.getInstancia(BoasVindas_activity.this);
+        this.conexao_db = Conexao.getInstance(BoasVindas_activity.this);
         this.input_spinner_idioma = findViewById(R.id.input_spinner_idioma_boasVindas);
         this.btn_img_next = findViewById(R.id.btn_img_next);
 

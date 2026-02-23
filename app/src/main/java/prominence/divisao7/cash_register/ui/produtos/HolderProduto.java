@@ -1,4 +1,4 @@
-package prominence.divisao7.cash_register.adapter;
+package prominence.divisao7.cash_register.ui.produtos;
 
 import android.view.View;
 import android.widget.LinearLayout;
@@ -10,7 +10,7 @@ import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import prominence.divisao7.cash_register.R;
-import prominence.divisao7.cash_register.model.Produto;
+import prominence.divisao7.cash_register.domain.model.Produto;
 
 
 public class HolderProduto extends RecyclerView.ViewHolder {

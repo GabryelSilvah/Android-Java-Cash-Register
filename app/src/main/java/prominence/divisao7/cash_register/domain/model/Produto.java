@@ -1,4 +1,4 @@
-package prominence.divisao7.cash_register.model;
+package prominence.divisao7.cash_register.domain.model;
 
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;

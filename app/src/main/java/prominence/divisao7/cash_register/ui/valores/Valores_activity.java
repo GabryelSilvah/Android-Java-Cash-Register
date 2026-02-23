@@ -1,4 +1,4 @@
-package prominence.divisao7.cash_register.ui.produtos;
+package prominence.divisao7.cash_register.ui.valores;
 
 import android.os.Bundle;
 import android.os.Handler;
@@ -16,10 +16,9 @@ import java.text.NumberFormat;
 import java.util.List;
 
 import prominence.divisao7.cash_register.R;
-import prominence.divisao7.cash_register.adapter.AdapterValores;
-import prominence.divisao7.cash_register.common.MenuBottom;
-import prominence.divisao7.cash_register.dao.Conexao;
-import prominence.divisao7.cash_register.model.Produto;
+import prominence.divisao7.cash_register.core.tools.MenuBottom;
+import prominence.divisao7.cash_register.core.database.Conexao;
+import prominence.divisao7.cash_register.domain.model.Produto;
 
 public class Valores_activity extends AppCompatActivity {
 
@@ -55,7 +54,7 @@ public class Valores_activity extends AppCompatActivity {
     }
 
     private void inicializar() {
-        this.conexao_db = Conexao.getInstancia(this);
+        this.conexao_db = Conexao.getInstance(this);
         this.txt_preco_final = findViewById(R.id.txt_preco_final);
         this.txt_quantitativo_itens = findViewById(R.id.txt_quantitativo_produto);
         this.container_lista_valores = findViewById(R.id.container_lista_valores);

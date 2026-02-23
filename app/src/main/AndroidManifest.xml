@@ -41,7 +41,7 @@
             android:configChanges="locale"
             android:exported="false" />
         <activity
-            android:name=".ui.produtos.Valores_activity"
+            android:name=".ui.valores.Valores_activity"
             android:configChanges="locale"
             android:exported="false" />
         <activity

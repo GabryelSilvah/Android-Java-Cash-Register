@@ -1,4 +1,4 @@
-package prominence.divisao7.cash_register.common;
+package prominence.divisao7.cash_register.core.tools;
 
 import android.content.Context;
 import android.view.ViewGroup;

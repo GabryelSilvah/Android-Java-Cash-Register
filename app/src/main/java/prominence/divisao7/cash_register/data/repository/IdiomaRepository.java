@@ -1,4 +1,4 @@
-package prominence.divisao7.cash_register.repository;
+package prominence.divisao7.cash_register.data.repository;
 
 
 import androidx.room.Dao;
@@ -8,7 +8,7 @@ import androidx.room.Query;
 import java.util.List;
 import java.util.Optional;
 
-import prominence.divisao7.cash_register.model.Idioma;
+import prominence.divisao7.cash_register.domain.model.Idioma;
 
 @Dao
 public interface IdiomaRepository {

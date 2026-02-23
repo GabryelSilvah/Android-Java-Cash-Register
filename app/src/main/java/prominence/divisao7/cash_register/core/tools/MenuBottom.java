@@ -1,4 +1,4 @@
-package prominence.divisao7.cash_register.common;
+package prominence.divisao7.cash_register.core.tools;
 
 import android.app.Dialog;
 import android.content.Context;
@@ -13,7 +13,7 @@ import prominence.divisao7.cash_register.ui.home.HomeActivity;
 import prominence.divisao7.cash_register.R;
 import prominence.divisao7.cash_register.ui.produtos.Cadastro_Activity;
 import prominence.divisao7.cash_register.ui.configuracoes.Config_activity;
-import prominence.divisao7.cash_register.ui.produtos.Valores_activity;
+import prominence.divisao7.cash_register.ui.valores.Valores_activity;
 
 public class MenuBottom {
 

@@ -1,4 +1,4 @@
-package prominence.divisao7.cash_register.adapter;
+package prominence.divisao7.cash_register.ui.valores;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -13,7 +13,7 @@ import java.text.NumberFormat;
 import java.util.List;
 
 import prominence.divisao7.cash_register.R;
-import prominence.divisao7.cash_register.model.Produto;
+import prominence.divisao7.cash_register.domain.model.Produto;
 
 public class AdapterValores extends RecyclerView.Adapter<HolderValores> {
 

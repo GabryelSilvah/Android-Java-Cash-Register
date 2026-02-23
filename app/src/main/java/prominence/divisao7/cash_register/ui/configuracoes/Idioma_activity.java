@@ -12,10 +12,10 @@ import java.util.List;
 import java.util.Optional;
 
 import prominence.divisao7.cash_register.R;
-import prominence.divisao7.cash_register.common.MenuBottom;
-import prominence.divisao7.cash_register.common.Translation_idioma;
-import prominence.divisao7.cash_register.dao.Conexao;
-import prominence.divisao7.cash_register.model.Idioma;
+import prominence.divisao7.cash_register.core.tools.MenuBottom;
+import prominence.divisao7.cash_register.core.tools.Translation_idioma;
+import prominence.divisao7.cash_register.core.database.Conexao;
+import prominence.divisao7.cash_register.domain.model.Idioma;
 
 public class Idioma_activity extends AppCompatActivity {
 
@@ -39,7 +39,7 @@ public class Idioma_activity extends AppCompatActivity {
 
 
     private void inicializar() {
-        this.conexao_db = Conexao.getInstancia(this);
+        this.conexao_db = Conexao.getInstance(this);
         this.input_spinner_idioma = findViewById(R.id.input_spinner_idioma);
         this.btn_alterar_idioma = findViewById(R.id.btn_alterar_idioma);
 

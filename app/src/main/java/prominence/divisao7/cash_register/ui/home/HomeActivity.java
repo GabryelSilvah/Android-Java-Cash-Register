@@ -20,11 +20,11 @@ import java.util.Arrays;
 import java.util.List;
 
 import prominence.divisao7.cash_register.R;
-import prominence.divisao7.cash_register.adapter.AdapterProduto;
-import prominence.divisao7.cash_register.common.MenuBottom;
-import prominence.divisao7.cash_register.common.Recurso;
-import prominence.divisao7.cash_register.dao.Conexao;
-import prominence.divisao7.cash_register.model.Produto;
+import prominence.divisao7.cash_register.ui.produtos.AdapterProduto;
+import prominence.divisao7.cash_register.core.tools.MenuBottom;
+import prominence.divisao7.cash_register.core.tools.Recurso;
+import prominence.divisao7.cash_register.core.database.Conexao;
+import prominence.divisao7.cash_register.domain.model.Produto;
 import prominence.divisao7.cash_register.ui.produtos.Cadastro_Activity;
 
 
@@ -35,6 +35,7 @@ public class HomeActivity extends AppCompatActivity {
     private RecyclerView recycler;
     private AdapterProduto adapterProduto;
     private Conexao conexao_db;
+    private Handler handler;
 
 
     @Override
@@ -45,22 +46,39 @@ public class HomeActivity extends AppCompatActivity {
         inicializar();
         showMenu(R.id.btn_menu);
         chamarCadastro();
+
+        handler.post(this::aplicarFiltro);
+    }
+
+    @Override
+    protected void onRestart() {
+        super.onRestart();
     }
 
     @Override
     protected void onResume() {
         super.onResume();
 
-        new Handler(Looper.getMainLooper()).post(this::listarProdutos);
-        new Handler(Looper.getMainLooper()).post(this::aplicarFiltro);
+
+        handler.post(() -> {
+            listarProdutos(conexao_db.produtoRepository().findAll(), 0);
+        });
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        handler.removeCallbacksAndMessages(null);
+        conexao_db.close();
     }
 
     //Carregando configurações essênciais
     private void inicializar() {
-        this.conexao_db = Conexao.getInstancia(this);
+        this.conexao_db = Conexao.getInstance(this);
+        this.handler = new Handler(Looper.getMainLooper());
         this.container_lista_produtos = findViewById(R.id.container_lista_produtos);
         this.input_spinner_filtros_produtos = findViewById(R.id.input_spinner_filtros_produtos);
-        this.conexao_db = Conexao.getInstancia(this);
+        this.conexao_db = Conexao.getInstance(this);
 
 
         //Buscando lista com nome dos filtros dos produtos
@@ -74,9 +92,9 @@ public class HomeActivity extends AppCompatActivity {
         this.input_spinner_filtros_produtos.setSelection(0);//Item padrão
 
 
-        //Inserindo recyclerView no LinearLayout da tela valores
-        container_lista_produtos.addView(LayoutInflater.from(this).inflate(R.layout.recycler_add, container_lista_produtos, false));
-        this.recycler = findViewById(R.id.lista_recycler_produtos);
+        //Inserindo recyclerView no LinearLayout da tela produtos
+        container_lista_produtos.addView(LayoutInflater.from(this).inflate(R.layout.recycler_produtos, container_lista_produtos, false));
+        this.recycler = findViewById(R.id.layout_recycler_produtos);
     }
 
 
@@ -101,22 +119,26 @@ public class HomeActivity extends AppCompatActivity {
 
 
     //Listando produtos com recyclerView
-    private void listarProdutos() {
-
-        //Buscando dados
-        List<Produto> listaProdutos = conexao_db.produtoRepository().findAll();
-
-        //Validando se a lista está vazia
-        if (listaProdutos.isEmpty()) {
+    private void listarProdutos(List<Produto> listaProdutos, int filtroTodos) {
+        //Validando se ao filtrar todos a lista é vazia
+        if (listaProdutos.isEmpty() && filtroTodos == 0) {
             recycler.setAdapter(null);
             Recurso.exibirMensagemNotFound(container_lista_produtos, HomeActivity.this, getString(R.string.mensagem_lista_vazia));
             return;
         }
 
         //Configurando e exibindo lista na recyclerView
-        adapterProduto = new AdapterProduto(listaProdutos, this);
-        this.recycler.setAdapter(adapterProduto);
+        container_lista_produtos.removeAllViews();
 
+        //Adicionando e vinculando listaRecycler novamento porque pode ter sido removida quando não encontrou algum produto na filtragem
+        container_lista_produtos.addView(LayoutInflater.from(HomeActivity.this).inflate(R.layout.recycler_produtos, container_lista_produtos, false));
+        recycler = findViewById(R.id.layout_recycler_produtos);
+
+
+        //Configurando e exibindo lista na recyclerView
+        adapterProduto = new AdapterProduto(listaProdutos, HomeActivity.this);
+        adapterProduto.notifyItemInserted(listaProdutos.size() - 1);
+        recycler.setAdapter(adapterProduto);
     }
 
 
@@ -169,31 +191,16 @@ public class HomeActivity extends AppCompatActivity {
                 }
 
 
-                //Validando se a lista está vazia
-                if (listaProdutos.isEmpty() && position != 0) {
+                //Validando se ao filtrar qualquer outro filtro a lista é vazia
+                if (listaProdutos.isEmpty() && position > 0) {
                     recycler.setAdapter(null);
                     Recurso.exibirMensagemNotFound(container_lista_produtos, HomeActivity.this, getString(R.string.mensagem_lista_filtragem_vazia));
                     return;
                 }
 
 
-                if (!listaProdutos.isEmpty()) {
-                    //Removendo qualquer view adicionada anteriomente dentro do container central
-                    container_lista_produtos.removeAllViews();
-
-                    //Adicionando e vinculando listaRecycler novamento porque pode ter sido removida quando não encontrou algum produto na filtragem
-                    container_lista_produtos.addView(LayoutInflater.from(parent.getContext()).inflate(R.layout.recycler_add, container_lista_produtos, false));
-                    recycler = findViewById(R.id.lista_recycler_produtos);
-
-
-                    //Configurando e exibindo lista na recyclerView
-                    adapterProduto = new AdapterProduto(listaProdutos, HomeActivity.this);
-                    recycler.setAdapter(adapterProduto);
-                    return;
-                }
-
-                recycler.setAdapter(null);
-                Recurso.exibirMensagemNotFound(container_lista_produtos, HomeActivity.this, getString(R.string.mensagem_lista_vazia));
+                //Exibir produtos encontrados com o filtro utilizado
+                listarProdutos(listaProdutos, position);
 
             }
 

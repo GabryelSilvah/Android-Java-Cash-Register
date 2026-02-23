@@ -1,4 +1,4 @@
-package prominence.divisao7.cash_register.adapter;
+package prominence.divisao7.cash_register.ui.valores;
 
 import android.content.Context;
 import android.view.View;

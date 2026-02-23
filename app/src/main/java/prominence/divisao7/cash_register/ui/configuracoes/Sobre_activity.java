@@ -1,13 +1,11 @@
 package prominence.divisao7.cash_register.ui.configuracoes;
 
-import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import prominence.divisao7.cash_register.R;
-import prominence.divisao7.cash_register.common.MenuBottom;
+import prominence.divisao7.cash_register.core.tools.MenuBottom;
 
 public class Sobre_activity extends AppCompatActivity {
 

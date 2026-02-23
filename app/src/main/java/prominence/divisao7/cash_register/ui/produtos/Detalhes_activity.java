@@ -17,12 +17,11 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-import prominence.divisao7.cash_register.ui.home.HomeActivity;
 import prominence.divisao7.cash_register.R;
-import prominence.divisao7.cash_register.common.MenuBottom;
-import prominence.divisao7.cash_register.dao.Conexao;
-import prominence.divisao7.cash_register.exceptions.NotFoundException;
-import prominence.divisao7.cash_register.model.Produto;
+import prominence.divisao7.cash_register.core.tools.MenuBottom;
+import prominence.divisao7.cash_register.core.database.Conexao;
+import prominence.divisao7.cash_register.core.tools.exceptions.NotFoundException;
+import prominence.divisao7.cash_register.domain.model.Produto;
 
 public class Detalhes_activity extends AppCompatActivity {
 
@@ -56,7 +55,7 @@ public class Detalhes_activity extends AppCompatActivity {
 
     //Inicializando variáveis
     private void inicializar() {
-        this.conexao_db = Conexao.getInstancia(this);
+        this.conexao_db = Conexao.getInstance(this);
         this.intentRecebida = getIntent();
 
         this.nome_produto = findViewById(R.id.nome_produto_detalhe);

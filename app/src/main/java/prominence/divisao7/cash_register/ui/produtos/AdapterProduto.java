@@ -1,4 +1,4 @@
-package prominence.divisao7.cash_register.adapter;
+package prominence.divisao7.cash_register.ui.produtos;
 
 import android.annotation.SuppressLint;
 import android.app.AlertDialog;
@@ -11,17 +11,17 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
+
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+
 import prominence.divisao7.cash_register.R;
-import prominence.divisao7.cash_register.dao.Conexao;
-import prominence.divisao7.cash_register.model.Produto;
-import prominence.divisao7.cash_register.ui.produtos.Detalhes_activity;
-import prominence.divisao7.cash_register.ui.produtos.EditarActivity;
+import prominence.divisao7.cash_register.core.database.Conexao;
+import prominence.divisao7.cash_register.domain.model.Produto;
 
 
 public class AdapterProduto extends RecyclerView.Adapter<HolderProduto> {
@@ -47,7 +47,6 @@ public class AdapterProduto extends RecyclerView.Adapter<HolderProduto> {
     }
 
 
-
     @Override
     public int getItemCount() {
         return lista_produtos.size();
@@ -57,74 +56,74 @@ public class AdapterProduto extends RecyclerView.Adapter<HolderProduto> {
     @Override
     public void onBindViewHolder(HolderProduto holder, @SuppressLint("RecyclerView") int position) {
 
-            //Pegando lista de dados para spinner no resources de string
-            String[] string_array_prioridades = contexto.getResources().getStringArray(R.array.lista_prioridades);
-            List<String> lista_prioridades = new ArrayList<>(Arrays.asList(string_array_prioridades));
+        //Pegando lista de dados para spinner no resources de string
+        String[] string_array_prioridades = contexto.getResources().getStringArray(R.array.lista_prioridades);
+        List<String> lista_prioridades = new ArrayList<>(Arrays.asList(string_array_prioridades));
 
-            Produto item = lista_produtos.get(position);
-            //Separando dados e adicionando rótulo/label para identificar
-            String nome = contexto.getString(R.string.label_nome) + " " + item.getNome_produto();
-            String quantidade = contexto.getString(R.string.label_quantidade) + " " + String.valueOf(item.getQuantidade_produto());
-            String prioridade = contexto.getString(R.string.label_prioridade) + " " + lista_prioridades.get(item.getPrioridade_produto());
-
-
-            //Setando dados nos componentes
-            holder.id_produto = item.getId_produto();
-            holder.nome_produto.setText(nome);
-            holder.quantidade.setText(quantidade);
-            holder.prioridade.setText(prioridade);
-            holder.produto = lista_produtos.get(position);
+        Produto item = lista_produtos.get(position);
+        //Separando dados e adicionando rótulo/label para identificar
+        String nome = contexto.getString(R.string.label_nome) + " " + item.getNome_produto();
+        String quantidade = contexto.getString(R.string.label_quantidade) + " " + String.valueOf(item.getQuantidade_produto());
+        String prioridade = contexto.getString(R.string.label_prioridade) + " " + lista_prioridades.get(item.getPrioridade_produto());
 
 
-            //Evento de click para editar informações do item
-            holder.btn_editar.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    editar_produto(item);
-                }
-            });
+        //Setando dados nos componentes
+        holder.id_produto = item.getId_produto();
+        holder.nome_produto.setText(nome);
+        holder.quantidade.setText(quantidade);
+        holder.prioridade.setText(prioridade);
+        holder.produto = lista_produtos.get(position);
 
 
-            //Evento de click para excluir item
-            holder.btn_excluir.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    excluir_produto(item.getId_produto(), position);
-                }
-            });
-
-
-            //Evento de click para exibir detalhes do item
-            holder.card_produto_home.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    exibir_detalhes_produto(item);
-                }
-            });
-
-
-            //Adicionando bolinha para sinalizar que o check/verificado/concluído está ativado
-            if (lista_produtos.get(position).getCheck_produto()) {
-                holder.simbolo_confirm_item.setBackground(contexto.getDrawable(R.drawable.circulo_check_shape));
+        //Evento de click para editar informações do item
+        holder.btn_editar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                editar_produto(item);
             }
+        });
 
-            //Se a prioridade for igual média então a cor é preta
-            if (item.getPrioridade_produto() == 0) {
-                holder.prioridade.setTextColor(Color.parseColor("#000000"));
+
+        //Evento de click para excluir item
+        holder.btn_excluir.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                excluir_produto(item.getId_produto(), position);
             }
+        });
 
-            //Se a prioridade for igual média então a cor é laranja
-            if (item.getPrioridade_produto() == 1) {
-                holder.prioridade.setTextColor(Color.parseColor("#ff6905"));
+
+        //Evento de click para exibir detalhes do item
+        holder.card_produto_home.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                exibir_detalhes_produto(item);
             }
+        });
 
 
-            //Se a prioridade for igual alta então a cor é vermelha
-            if (item.getPrioridade_produto() == 2) {
-                holder.prioridade.setTextColor(Color.parseColor("#ff082d"));
-            }
+        //Adicionando bolinha para sinalizar que o check/verificado/concluído está ativado
+        if (lista_produtos.get(position).getCheck_produto()) {
+            holder.simbolo_confirm_item.setBackground(contexto.getDrawable(R.drawable.circulo_check_shape));
+        }
+
+        //Se a prioridade for igual média então a cor é preta
+        if (item.getPrioridade_produto() == 0) {
+            holder.prioridade.setTextColor(Color.parseColor("#000000"));
+        }
+
+        //Se a prioridade for igual média então a cor é laranja
+        if (item.getPrioridade_produto() == 1) {
+            holder.prioridade.setTextColor(Color.parseColor("#ff6905"));
+        }
+
+
+        //Se a prioridade for igual alta então a cor é vermelha
+        if (item.getPrioridade_produto() == 2) {
+            holder.prioridade.setTextColor(Color.parseColor("#ff082d"));
+        }
+
     }
-
 
 
     //Alterar as informações do produto
@@ -138,7 +137,7 @@ public class AdapterProduto extends RecyclerView.Adapter<HolderProduto> {
         intent.putExtra("prioridade_produto", produto.getPrioridade_produto());
         intent.putExtra("categoria_produto", produto.getCategoria_produto());
         intent.putExtra("preco_produto", String.valueOf(produto.getPreco_produto()));
-
+        notifyDataSetChanged();
         contexto.startActivity(intent);
     }
 
@@ -173,7 +172,7 @@ public class AdapterProduto extends RecyclerView.Adapter<HolderProduto> {
         alertExclusao.setPositiveButton(contexto.getString(R.string.dialog_positivo), new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
-                Conexao db = Conexao.getInstancia(contexto);
+                Conexao db = Conexao.getInstance(contexto);
                 db.produtoRepository().delete(id_produto);
                 lista_produtos.remove(posicao);
                 notifyDataSetChanged();

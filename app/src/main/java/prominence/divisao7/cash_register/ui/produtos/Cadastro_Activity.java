@@ -13,11 +13,11 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 import prominence.divisao7.cash_register.R;
-import prominence.divisao7.cash_register.common.MenuBottom;
-import prominence.divisao7.cash_register.dao.Conexao;
-import prominence.divisao7.cash_register.exceptions.DuplicateNameException;
-import prominence.divisao7.cash_register.exceptions.BadRequestException;
-import prominence.divisao7.cash_register.model.Produto;
+import prominence.divisao7.cash_register.core.tools.MenuBottom;
+import prominence.divisao7.cash_register.core.database.Conexao;
+import prominence.divisao7.cash_register.core.tools.exceptions.DuplicateNameException;
+import prominence.divisao7.cash_register.core.tools.exceptions.BadRequestException;
+import prominence.divisao7.cash_register.domain.model.Produto;
 
 public class Cadastro_Activity extends AppCompatActivity {
 
@@ -50,7 +50,7 @@ public class Cadastro_Activity extends AppCompatActivity {
     }
 
     public void inizialiar() {
-        this.conexao_db = Conexao.getInstancia(getApplicationContext());
+        this.conexao_db = Conexao.getInstance(getApplicationContext());
         this.input_nome = findViewById(R.id.input_nome);
         this.input_quantidade = findViewById(R.id.input_quantidade);
         this.input_preco = findViewById(R.id.input_preco);

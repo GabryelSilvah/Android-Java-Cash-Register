@@ -10,8 +10,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import java.util.Locale;
 import java.util.Optional;
 
-import prominence.divisao7.cash_register.dao.Conexao;
-import prominence.divisao7.cash_register.model.Idioma;
+import prominence.divisao7.cash_register.core.database.Conexao;
+import prominence.divisao7.cash_register.domain.model.Idioma;
 import prominence.divisao7.cash_register.ui.home.BoasVindas_activity;
 import prominence.divisao7.cash_register.ui.home.HomeActivity;
 
@@ -43,7 +43,7 @@ public class StartApp extends AppCompatActivity {
 
 
     private void inicializar() {
-        this.conexao_db = Conexao.getInstancia(this);
+        this.conexao_db = Conexao.getInstance(this);
         this.idiomaPadraoDispositivo = Locale.getDefault().getLanguage();
     }
 
@@ -81,7 +81,6 @@ public class StartApp extends AppCompatActivity {
         }
 
         conexao_db.idiomaRepository().save(new Idioma(idiomaPadraoDispositivo, true));
-
     }
 
 }

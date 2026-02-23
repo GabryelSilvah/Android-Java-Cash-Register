@@ -1,4 +1,4 @@
-package prominence.divisao7.cash_register.exceptions;
+package prominence.divisao7.cash_register.core.tools.exceptions;
 
 public class DuplicateNameException extends RuntimeException {
 
